@@ -4,47 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;1,300&display=swap" rel="stylesheet">
     <title>Weather App</title>
 </head>
 <body>
 
-    <div id="loading-page">
-        <h1>Weather App</h1>
-    </div>
-
-<header><h1>Weather App</h1></header>
+<header>
+    <p class="title">ClearSky</p>
+</header>
 
 <main>
-    <section>
-        <section>
-            <p id="main"></p>
-        </section>
-
-            <aside>
-
-            </aside>
-
+   <section>
+        <p id="location-name"></p>
+        <p id="country-name"></p>
     </section>
-
-    <section>
-        <section>
-
-        </section>
-        
-            <section>
-
-            </section>
-
-                <section>
-                
-                </section>
-        
+    <section class="main-data">
+        <div>
+            <p id="current-weather"></p>
+        </div>
+        <div class="conditions">
+            <p id="day-of-week"></p>
+            <p id="date"></p>
+            <p id="weather-conds"></p>
+        </div>
     </section>
 </main>
 
+<aside>
+    <section><p id="hourly-title">Hourly Forecast</p></section>
+    <div id="scrollable">
+        <ul id="hourly-weather">
+
+        </ul>
+    </div>
+</aside>
+
 <footer>
-    <p>Copyright &copy; 2023 <a href="#">Tyler Wolfe</a></p>
-    <a href="#"><img src="#" alt="GitHub Logo"></a>
+    <div class="forecast-links">
+        <button class="card-link">Current</button>
+        <button class="card-link">Future</button>
+    </div>
+    <div id="details-forecast">
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+        <div class="card">
+        </div>
+    </div>
+    <div class="copyright-link">
+        <p>Copyright &copy; 2023 <a href="#">Tyler Wolfe</a></p>
+        <a href="#"><img src="#" alt="GitHub Logo"></a>
+    </div>
 </footer>
 
 <!-- JavaScript for the app -->

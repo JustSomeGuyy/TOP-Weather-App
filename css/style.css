@@ -1,3 +1,38 @@
-#loading-page {
-    display: none;
+body {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "header header aside"
+    "main main aside"
+    "main main aside"
+    "footer footer aside"
+    ;
+}
+
+header {
+    grid-area: header;
+    border: 1px solid red;
+    height: 4rem;
+}
+
+main {
+    grid-area: main;
+    border: 1px solid red;
+    height: 75dvh;
+}
+
+aside {
+    grid-area: aside;
+    border: 1px solid red;
+}
+
+footer {
+    grid-area: footer;
+    border: 1px solid red;
+}
+
+button {
+    background-color: inherit;
+    border: none;
 }
