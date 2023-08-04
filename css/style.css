@@ -1,3 +1,28 @@
+/* Need to complete the UI design,
+Adding correct colors for the website,
+Find icons for the weather states.
+Obtain images/videos for the weather conditions.
+Make aside the proper size.
+Add scrolling got the hourly forecast */
+
+html {
+    font-size: 1rem;
+    box-sizing: border-box;
+
+    --main-color: gray;
+    --main-font: 'Poppins', sans-serif;
+    --thin-font: 100;
+    --light-font: 200;
+    --italic: 300;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+/* This is the code for the layout of the site. */
+
 body {
     display: grid;
     grid-template-columns: auto;
@@ -8,31 +33,101 @@ body {
     "main main aside"
     "footer footer aside"
     ;
+    background-color: var(--main-color);
+    font-family: var(--main-font);
 }
 
 header {
     grid-area: header;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 4rem;
+    padding-left: 1.2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 main {
     grid-area: main;
     border: 1px solid red;
-    height: 75dvh;
+    height: 65dvh;
+    width: 85dvw;
 }
 
 aside {
     grid-area: aside;
     border: 1px solid red;
+    backdrop-filter: blur(5px);
+    max-width: 300px;
 }
 
 footer {
     grid-area: footer;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    height: 25dvh;
 }
 
+/* button element */
 button {
     background-color: inherit;
     border: none;
+}
+
+/* This is for the header */
+.title {
+    font-size: 1.7rem;
+    font-weight: var(--light-font);
+}
+
+/* This is for the main */
+
+.location {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:  0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: var(--light-font);
+}
+
+.main-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    /* height: 100%; */
+    border: 1px solid red;
+    font-size: 2rem;
+    margin: auto 0;
+}
+
+#current-weather {
+    font-size: 15rem;
+}
+
+.degree {
+    font-size: 8rem;
+    position: relative;
+    bottom: 4rem;
+    font-weight: var(--light-font);
+}
+
+#day-of-week {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#date {
+    font-size: 3rem;
+    font-weight: var(--thin-font);
+}
+
+#weather-conds {
+    font-size: 2.5rem;
+    font-weight: var(--light-font);
+}
+
+aside section {
+
 }
