@@ -5,10 +5,8 @@ Obtain images/videos for the weather conditions.
 Make aside the proper size.
 Add scrolling got the hourly forecast */
 
-html {
+:root {
     font-size: 1rem;
-    box-sizing: border-box;
-
     --main-color: gray;
     --main-font: 'Poppins', sans-serif;
     --thin-font: 100;
@@ -16,18 +14,35 @@ html {
     --italic: 300;
 }
 
+html {
+    box-sizing: border-box;
+    width: 100%;
+}
+
 p{
     margin: 0;
     padding: 0;
 }
 
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* This is the code for the layout of the site. */
 
 body {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
+    margin: 0;
+    width: 100dvw;
+    padding: 1rem;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
     "header header aside"
     "main main aside"
     "main main aside"
@@ -39,9 +54,8 @@ body {
 
 header {
     grid-area: header;
-    /* border: 1px solid red; */
     height: 4rem;
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -50,22 +64,25 @@ header {
 
 main {
     grid-area: main;
-    border: 1px solid red;
     height: 65dvh;
-    width: 85dvw;
+    width: 77dvw;
 }
 
 aside {
     grid-area: aside;
-    border: 1px solid red;
     backdrop-filter: blur(5px);
-    max-width: 300px;
+    max-width: 21dvw;
+    min-width: 5rem;
+    background-color: rgba(0,0,0,0.03);
 }
 
 footer {
     grid-area: footer;
-    /* border: 1px solid red; */
     height: 25dvh;
+    background-color: rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* button element */
@@ -96,10 +113,8 @@ button {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    /* height: 100%; */
-    border: 1px solid red;
+    height: 85%;
     font-size: 2rem;
-    margin: auto 0;
 }
 
 #current-weather {
@@ -114,7 +129,7 @@ button {
 }
 
 #day-of-week {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 600;
 }
 
@@ -128,6 +143,55 @@ button {
     font-weight: var(--light-font);
 }
 
-aside section {
+#hourly-title {
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: var(--thin-font);
+}
 
+#hourly-weather {
+    height: 60dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    padding-left: 0;
+    font-size: 1.1rem;
+}
+
+#hourly-weather::-webkit-scrollbar {
+    display: none;
+}
+
+#hourly-weather li{
+    margin-bottom: 3px;
+}
+
+#hourly-weather li:last-child {
+    margin-bottom: 0;
+}
+
+.card-link {
+    width: 5rem;
+    margin: 8px;
+    font-size: .9rem;
+    font-family: var(--main-font);
+}
+
+#details-forecast {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 20rem;
+}
+
+.copyright {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

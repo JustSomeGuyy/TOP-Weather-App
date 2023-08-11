@@ -18,16 +18,19 @@
 <main>
    <section class="location">
         <p id="location-name"></p>
+        <p id="time"></p>
         <p id="country-name"></p>
     </section>
     <section class="main-data">
         <div>
-            <p id="current-weather">-4<span class="degree">&deg;</span></p>
+            <p id="current-weather">
+
+            </p>
         </div>
         <div class="conditions">
-            <p id="day-of-week">Saturday</p>
-            <p id="date">August 3, 2023</p>
-            <p id="weather-conds">Smokey</p>
+            <p id="day-of-week"></p>
+            <p id="date"></p>
+            <p id="weather-conds"></p>
         </div>
     </section>
 </main>
@@ -43,24 +46,28 @@
 
 <footer>
     <div class="forecast-links">
-        <button class="card-link">Current</button>
-        <button class="card-link">Future</button>
+        <button class="card-link" id="current-details">Current</button>
+        <button class="card-link" id="forecast">Forecast</button>
     </div>
     <div id="details-forecast">
-        <div class="card">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatum.
+        <div class="card">
         </div>
-        <div class="card">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatum.
+        <div class="card">
         </div>
-        <div class="card">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatum.
+        <div class="card">
         </div>
     </div>
-    <div class="copyright-link">
+
+    <div class="copyright">
         <p>Copyright &copy; 2023 <a href="#">Tyler Wolfe</a></p>
         <a href="#"><img src="#" alt="GitHub Logo"></a>
     </div>
 </footer>
 
+
+
 <!-- JavaScript for the app -->
-    <script type="module" src="src/main.js" defer ></script>
+    <script type="text/javascript" src="src/config.js" defer></script>
+    <script type="text/javascript" src="src/main.js" defer ></script>
 </body>
 </html>
