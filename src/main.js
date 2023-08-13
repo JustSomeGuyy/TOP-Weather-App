@@ -1,9 +1,10 @@
 const apiUrl = 'http://api.weatherapi.com/v1/forecast.json?';
 const url = config.MY_Key;
 
-// This is for theD DOM elements.
+// This is for the DOM elements.
 const weekday = document.getElementById('day-of-week');
 const date = document.getElementById('date');
+const displayTime = document.getElementById('time');
 
 async function localWeather(position) {
   const geoWeather = await fetch(`${apiUrl}&key=${url}q=${position.coords.latitude},${position.coords.longitude}&days=3`, { mode: 'cors' });
@@ -41,31 +42,23 @@ function currentConditions(param) {
 
 function getTime() {
   const getCurrentTime = new Date();
-  const displayTime = document.getElementById('time');
-  const hours = getCurrentTime.getHours();
-  const minutes = getCurrentTime.getMinutes();
-  let minute;
-  let hour;
-  let amOrPm;
-  if (hours === 0 && hours < 1) {
-    amOrPm = 'AM';
-    hour = hours + 12;
-  } else if (hours > 12 && hours > 0) {
-    amOrPm = 'AM';
-    hour = hours;
-  } else {
-    amOrPm = 'PM';
-    hour = hours - 12;
-  };
-  if (minutes < 10) {
-    minute = `0${minutes}`;
-  } else {
-    minute = minutes;
-  };
-  displayTime.innerText = `${hour} : ${minute} ${amOrPm}`;
+  const currentTime = getCurrentTime.toLocaleTimeString('default', {
+    hour: 'numeric', minute: '2-digit', hour12: 'true',
+  });
+  displayTime.innerText = currentTime;
+}
+
+function displayDate() {
+  const getCurrentDate = new Date();
+  const longDate = getCurrentDate.toLocaleString('default', { month: 'long', day: '2-digit', year: 'numeric' });
+  const longDay = getCurrentDate.toLocaleDateString('default', { weekday: 'long' });
+  weekday.innerText = longDay;
+  date.innerText = longDate;
 }
 
 function updateTimeAndDate() {
   setInterval(getTime, 1000);
 }
+
+displayDate();
 updateTimeAndDate();
