@@ -1,4 +1,5 @@
 const apiUrl = 'http://api.weatherapi.com/v1/forecast.json?';
+// eslint-disable-next-line no-undef
 const url = config.MY_Key;
 
 // This is for the DOM elements.
@@ -12,6 +13,8 @@ async function localWeather(position) {
   console.log(data);
   populateCityName(data);
   currentConditions(data);
+  addTempDetails(data);
+  addWindDetails(data);
 }
 
 function getLocation() {
@@ -36,7 +39,7 @@ function currentConditions(param) {
   const conditions = document.getElementById('weather-conds');
   const currentTemp = param.current.temp_c;
   const roundedTemp = Math.floor(currentTemp);
-  temp.innerHTML = `${roundedTemp}<span class='degree'>&deg;</span>`;
+  temp.innerHTML = `${roundedTemp}<span class='degree'>&deg;c</span>`;
   conditions.innerText = param.current.condition.text;
 }
 
@@ -62,3 +65,35 @@ function updateTimeAndDate() {
 
 displayDate();
 updateTimeAndDate();
+
+function displayCurrentDetails() {
+  const display = document.getElementById('details-forecast');
+  for (let i = 0; i < 3; i += 1) {
+    const createCards = document.createElement('div');
+    display.append(createCards);
+    createCards.classList.add('card');
+    createCards.setAttribute('id', i);
+  }
+}
+
+function addTempDetails(param) {
+  const highestTemp = document.createElement('p');
+  const lowestTemp = document.createElement('p');
+  const temps = document.getElementById('0');
+  temps.append(highestTemp, lowestTemp);
+  highestTemp.innerHTML = `High: ${Math.floor(param.forecast.forecastday[0].day.maxtemp_c)}<span>&deg;</span>c`;
+  lowestTemp.innerHTML = `Low: ${Math.floor(param.forecast.forecastday[0].day.mintemp_c)}<span>&deg;</span>c`;
+}
+
+function addWindDetails(param) {
+  const windNormal = document.createElement('p');
+  const windGust = document.createElement('p');
+  const windDirection = document.createElement('p');
+  const wind = document.getElementById('1');
+  wind.append(windNormal, windDirection, windGust);
+  windNormal.innerText = `Wind: ${Math.floor(param.current.wind_kph)} kph`;
+  windDirection.innerText = param.current.wind_dir;
+  windGust.innerText = `Gust: ${Math.floor(param.current.gust_kph)} kph`;
+}
+
+displayCurrentDetails();

@@ -1,9 +1,11 @@
-/* Need to complete the UI design,
+/* 
+Need to complete the UI design,
 Adding correct colors for the website,
 Find icons for the weather states.
 Obtain images/videos for the weather conditions.
 Make aside the proper size.
-Add scrolling got the hourly forecast */
+Add scrolling got the hourly forecast
+*/
 
 :root {
     font-size: 1rem;
@@ -125,7 +127,7 @@ button {
     font-size: 8rem;
     position: relative;
     bottom: 4rem;
-    font-weight: var(--light-font);
+    line-height: 5px;
 }
 
 #day-of-week {
