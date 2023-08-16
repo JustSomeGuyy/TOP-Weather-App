@@ -174,10 +174,13 @@ button {
 }
 
 .card-link {
-    width: 5rem;
     margin: 8px;
-    font-size: .9rem;
+    padding: .3rem;
+    width: 6.5rem;
+    margin: .2rem;
+    font-size: .8rem;
     font-family: var(--main-font);
+    cursor: pointer;
 }
 
 #details-forecast {

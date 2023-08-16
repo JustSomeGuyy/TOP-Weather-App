@@ -7,16 +7,6 @@ const weekday = document.getElementById('day-of-week');
 const date = document.getElementById('date');
 const displayTime = document.getElementById('time');
 
-async function localWeather(position) {
-  const geoWeather = await fetch(`${apiUrl}&key=${url}q=${position.coords.latitude},${position.coords.longitude}&days=3`, { mode: 'cors' });
-  const data = await geoWeather.json();
-  console.log(data);
-  populateCityName(data);
-  currentConditions(data);
-  addTempDetails(data);
-  addWindDetails(data);
-}
-
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(localWeather);
@@ -81,8 +71,8 @@ function addTempDetails(param) {
   const lowestTemp = document.createElement('p');
   const temps = document.getElementById('0');
   temps.append(highestTemp, lowestTemp);
-  highestTemp.innerHTML = `High: ${Math.floor(param.forecast.forecastday[0].day.maxtemp_c)}<span>&deg;</span>c`;
-  lowestTemp.innerHTML = `Low: ${Math.floor(param.forecast.forecastday[0].day.mintemp_c)}<span>&deg;</span>c`;
+  highestTemp.innerHTML = `<p>High</p> ${Math.floor(param.forecast.forecastday[0].day.maxtemp_c)}<span>&deg;</span>c`;
+  lowestTemp.innerHTML = `<p>Low</p> ${Math.floor(param.forecast.forecastday[0].day.mintemp_c)}<span>&deg;</span>c`;
 }
 
 function addWindDetails(param) {
@@ -93,7 +83,58 @@ function addWindDetails(param) {
   wind.append(windNormal, windDirection, windGust);
   windNormal.innerText = `Wind: ${Math.floor(param.current.wind_kph)} kph`;
   windDirection.innerText = param.current.wind_dir;
-  windGust.innerText = `Gust: ${Math.floor(param.current.gust_kph)} kph`;
+  windGust.innerText = `Gusting: ${Math.floor(param.current.gust_kph)} kph`;
 }
 
-displayCurrentDetails();
+function addFurtherDetails(param) {
+  const detailsDisplay = document.getElementById('2');
+  const ultraViolet = document.createElement('p');
+  const visibility = document.createElement('p');
+  const humidity = document.createElement('p');
+  detailsDisplay.append(ultraViolet, visibility, humidity);
+  ultraViolet.innerText = `UV Index: ${param.current.uv}`;
+  visibility.innerText = `Visibility: ${param.current.vis_km}`;
+  humidity.innerText = `Humidity: ${param.current.humidity}`;
+}
+
+function addCurrentDetails(param) {
+  currentConditions(param);
+  addFurtherDetails(param);
+  addTempDetails(param);
+  addWindDetails(param);
+}
+
+async function localWeather(position) {
+  const geoWeather = await fetch(`${apiUrl}&key=${url}q=${position.coords.latitude},${position.coords.longitude}&days=3`, { mode: 'cors' });
+  const data = await geoWeather.json();
+  console.log(data);
+  displayCurrentDetails();
+  populateCityName(data);
+  addCurrentDetails(data);
+  addHourlyWeather(data);
+}
+
+const currentDisplay = document.getElementById('current-details');
+currentDisplay.addEventListener('click', addCurrentDetails());
+
+function addHourlyWeather(param) {
+  const hourlyWeather = document.getElementById('hourly-weather');
+  const timeReference = new Date().getHours();
+  const hours = ['12 AM', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM'];
+  const hourlyWeatherUpdates = param.forecast.forecastday[0].hour;
+  if (timeReference <= hourlyWeatherUpdates.length && timeReference <= hours.length) {
+    const matchedWeatherHours = hourlyWeatherUpdates.slice(timeReference);
+    const hoursShort = hours.slice(timeReference);
+    for (let i = 0; i < matchedWeatherHours.length; i += 1) {
+      const weatherHours = document.createElement('li');
+      weatherHours.innerHTML = `${hoursShort[i]}: ${Math.floor(matchedWeatherHours[i].temp_c)}<span>&deg;</span>c`;
+      hourlyWeather.append(weatherHours);
+    }
+  }
+}
+
+// This is for building the cards for displaying the forecasted weather
+// function forecastCards() {
+//   const displayCards = document.getElementById('details-forecast');
+
+// }
