@@ -13,15 +13,16 @@
 
 <header>
     <p class="title">ClearSky</p>
+    <div><input type="search" name="location-search" id="location-search"></div>
 </header>
 
 <main>
-   <section class="location">
+   <div class="location">
         <p id="location-name"></p>
         <p id="time"></p>
         <p id="country-name"></p>
-    </section>
-    <section class="main-data">
+    </div>
+    <div class="main-data">
         <div>
             <p id="current-weather">
 
@@ -32,11 +33,11 @@
             <p id="date"></p>
             <p id="weather-conds"></p>
         </div>
-    </section>
+    </div>
 </main>
 
 <aside>
-    <section><p id="hourly-title">Hourly Forecast</p></section>
+    <div><p id="hourly-title">Hourly Forecast</p></div>
     <div id="scrollable">
         <ul id="hourly-weather">
 
@@ -45,14 +46,12 @@
 </aside>
 
 <footer>
-    <div class="forecast-links">
-        <button class="card-link" id="current-details">Current</button>
-        <button class="card-link" id="forecast">Forecast</button>
-    </div>
-    <div id="details-forecast">
+    <div id="details">
         
     </div>
+    <div id="forecast">
 
+    </div>
     <div class="copyright">
         <p>Copyright &copy; 2023 <a href="#">Tyler Wolfe</a></p>
         <a href="#"><img src="#" alt="GitHub Logo"></a>

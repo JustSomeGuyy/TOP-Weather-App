@@ -157,7 +157,7 @@ button {
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    padding-left: 0;
+    padding: 0;
     font-size: 1.1rem;
 }
 
@@ -173,6 +173,12 @@ button {
     margin-bottom: 0;
 }
 
+.forecast-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .card-link {
     margin: 8px;
     padding: .3rem;
@@ -183,7 +189,13 @@ button {
     cursor: pointer;
 }
 
-#details-forecast {
+#details {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#forecast {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
