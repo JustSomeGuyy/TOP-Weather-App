@@ -63,10 +63,14 @@ function displayCurrentDetails() {
   }
 }
 
+displayCurrentDetails()
+
 function addTempDetails(param) {
   const highestTemp = document.createElement('p');
   const lowestTemp = document.createElement('p');
   const temps = document.getElementById('0');
+  highestTemp.innerHTML;
+  lowestTemp.innerHTML;
   temps.append(highestTemp, lowestTemp);
   highestTemp.innerHTML = `High: ${Math.floor(param.forecast.forecastday[0].day.maxtemp_c)}<span>&deg;</span>c`;
   lowestTemp.innerHTML = `Low: ${Math.floor(param.forecast.forecastday[0].day.mintemp_c)}<span>&deg;</span>c`;
@@ -77,6 +81,9 @@ function addWindDetails(param) {
   const windGust = document.createElement('p');
   const windDirection = document.createElement('p');
   const wind = document.getElementById('1');
+  windNormal.innerText;
+  windGust.innerText;
+  windDirection.innerText;
   wind.append(windNormal, windDirection, windGust);
   windNormal.innerText = `Wind: ${Math.floor(param.current.wind_kph)} kph`;
   windDirection.innerText = param.current.wind_dir;
@@ -88,6 +95,9 @@ function addFurtherDetails(param) {
   const ultraViolet = document.createElement('p');
   const visibility = document.createElement('p');
   const humidity = document.createElement('p');
+  visibility.innerText;
+  ultraViolet.innerText;
+  humidity.innerText;
   detailsDisplay.append(ultraViolet, visibility, humidity);
   ultraViolet.innerText = `UV Index: ${param.current.uv}`;
   visibility.innerText = `Visibility: ${param.current.vis_km} km`;
@@ -105,18 +115,18 @@ async function localWeather(position) {
   const geoWeather = await fetch(`${apiUrl}&key=${url}q=${position.coords.latitude},${position.coords.longitude}&days=4`, { mode: 'cors' });
   const data = await geoWeather.json();
   console.log(data);
-  displayCurrentDetails();
   populateCityName(data);
   addCurrentDetails(data);
   addHourlyWeather(data);
   buildingForecastDisplay(data);
 }
 
-function addHourlyWeather(param) {
+async function addHourlyWeather(param) {
   const hourlyWeather = document.getElementById('hourly-weather');
   const timeReference = new Date().getHours();
   const hours = ['12 AM', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM'];
   const hourlyWeatherUpdates = param.forecast.forecastday[0].hour;
+  const nextDayWeather = param.forecast.forecastday[1].hour;
   if (timeReference <= hourlyWeatherUpdates.length && timeReference <= hours.length) {
     const matchedWeatherHours = hourlyWeatherUpdates.slice(timeReference);
     const hoursShort = hours.slice(timeReference);
@@ -125,6 +135,11 @@ function addHourlyWeather(param) {
       weatherHours.innerHTML = `${hoursShort[i]}: ${Math.floor(matchedWeatherHours[i].temp_c)}<span>&deg;</span>c`;
       hourlyWeather.append(weatherHours);
     }
+  }
+  for (let o = 0; hours.length > 0; o += 1) {
+    const nextDay = document.createElement('li');
+    nextDay.innerHTML = `${hours[o]}: ${Math.floor(nextDayWeather[o].temp_c)}<span>&deg;</span>c`;
+    hourlyWeather.append(nextDay);
   }
 }
 
@@ -138,46 +153,75 @@ function futureDates(date, num) {
 }
 
 const oneDay = futureDates(futureDate, 1);
-
-console.log(oneDay);
+const twoDay = futureDates(futureDate, 1);
+const threeDay = futureDates(futureDate, 1);
 
 // This is for building the cards for displaying the forecasted weather
-function forecastCards() {
-  const displayCards = document.getElementById('forecast');
-  for (let i = 0; i <= 2; i += 1) {
-    const cards = document.createElement('div');
-    cards.classList.add('card');
-    cards.setAttribute('id', `box-${i}`);
-    displayCards.append(cards);
-  }
+const displayCards = document.getElementById('forecast');
+for (let i = 0; i <= 2; i += 1) {
+  const cards = document.createElement('div');
+  const forecastDate = document.createElement('p');
+  const highLowTemp = document.createElement('p');
+  forecastDate.setAttribute('id', `dates-${i}`);
+  highLowTemp.setAttribute('id', `temps-${i}`);
+  cards.classList.add('card');
+  cards.setAttribute('id', `box-${i}`);
+  cards.append(forecastDate, highLowTemp);
+  displayCards.append(cards);
 }
+
+const forecastDateOne = document.getElementById('dates-0');
+const forecastdateTwo = document.getElementById('dates-1');
+const forecastDateThree = document.getElementById('dates-2');
+
+forecastDateOne.innerText = oneDay;
+forecastdateTwo.innerText = twoDay;
+forecastDateThree.innerText = threeDay;
 
 function displayForecast(param) {
   const forecastOne = document.getElementById('box-0');
   const forecastTwo = document.getElementById('box-1');
   const forecastThree = document.getElementById('box-2');
-  const futureDate = document.createElement('p');
   const highForecastTemp = [];
   const lowForecastTemp = [];
+  const tempsOne = document.getElementById('temps-0');
+  const tempsTwo = document.getElementById('temps-1');
+  const tempsThree = document.getElementById('temps-2');
+  tempsOne.innerHTML;
+  tempsTwo.innerHTML;
+  tempsThree.innerHTML;
   for (let i = 1; i <= 3; i += 1) {
     const highTemp = Math.floor(param.forecast.forecastday[i].day.maxtemp_c);
     const lowTemp = Math.floor(param.forecast.forecastday[i].day.mintemp_c);
     highForecastTemp.push(highTemp);
     lowForecastTemp.push(lowTemp);
   }
-  forecastOne.innerHTML = `High: ${highForecastTemp[0]}<span>&deg;</span>c Low: ${lowForecastTemp[0]}<span>&deg;</span>c`;
-  forecastTwo.innerHTML = `High: ${highForecastTemp[1]}<span>&deg;</span>c Low: ${lowForecastTemp[1]}<span>&deg;</span>c`;
-  forecastThree.innerHTML = `High: ${highForecastTemp[2]}<span>&deg;</span>c Low: ${lowForecastTemp[2]}<span>&deg;</span>c`;
-}
-
-function forecastDates() {
-  const cardOne = document.getElementById('box-0');
-  const cardTwo = document.getElementById('box-1');
-  const cardThree = document.getElementById('box-2');
-
+  tempsOne.innerHTML = `High: ${highForecastTemp[0]}<span>&deg;</span>c Low: ${lowForecastTemp[0]}<span>&deg;</span>c`;
+  tempsTwo.innerHTML = `High: ${highForecastTemp[1]}<span>&deg;</span>c Low: ${lowForecastTemp[1]}<span>&deg;</span>c`;
+  tempsThree.innerHTML = `High: ${highForecastTemp[2]}<span>&deg;</span>c  Low: ${lowForecastTemp[2]}<span>&deg;</span>c`;
+  forecastOne.appendChild(tempsOne);
+  forecastTwo.appendChild(tempsTwo);
+  forecastThree.appendChild(tempsThree);
 }
 
 function buildingForecastDisplay(param) {
-  forecastCards(param);
   displayForecast(param);
 }
+
+const locationSearch = document.getElementById('location-search');
+
+async function locationLookUp() {
+  const location = locationSearch.value;
+  const geoWeather = await fetch(`${apiUrl}&key=${url}q=${location}&days=4`, { mode: 'cors' });
+  const data = await geoWeather.json();
+  populateCityName(data);
+  addCurrentDetails(data);
+  addHourlyWeather(data);
+  buildingForecastDisplay(data);
+}
+
+locationSearch.addEventListener('keydown', (e) => {
+  if (e.code === 'Enter') {
+    locationLookUp();
+  }
+});
