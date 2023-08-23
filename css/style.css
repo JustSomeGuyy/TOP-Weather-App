@@ -231,7 +231,12 @@ img {
 }
 
 .card {
-    width: 20rem;
+    width: 15rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .copyright {
