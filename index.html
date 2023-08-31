@@ -9,13 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;1,300&display=swap" rel="stylesheet">
     <title>Weather App</title>
 </head>
-<body>
-
+<body class="adaptive">
 <header>
     <p class="title">ClearSky</p>
     <div class="search-bar">
         <input type="search" name="location-search" id="location-search" placeholder="search..">
-        <img src="imgs/app_icons/icons8-search-50.png" alt="magnifying glass icon for the search bar." srcset="">
     </div>
 </header>
 
@@ -49,6 +47,10 @@
 </aside>
 
 <footer>
+    <div class="forecast-links">
+        <button id="details-link" class="card-link adaptive" onclick="showCurrentDetails()">Current</button>
+        <button id="forecast-link" class="card-link adaptive" onclick="showForecast()">Forecast</button>
+    </div>
     <div id="details">
         
     </div>

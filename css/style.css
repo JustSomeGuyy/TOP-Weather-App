@@ -9,7 +9,10 @@ Add scrolling got the hourly forecast
 
 :root {
     font-size: 1rem;
-    --main-color: gray;
+    --light-bg: #FAF0E6;
+    --dark-bg: #352F44;
+    --secondary-colour: #B9B4C7;
+    --third-colour: #5C5470;
     --main-font: 'Poppins', sans-serif;
     --thin-font: 100;
     --light-font: 200;
@@ -36,12 +39,23 @@ a {
     color: inherit;
 }
 
+
+
+@media (prefers-color-scheme: light){
+    body.adaptive {
+        background-color: var(--light-bg);
+        color: var(--dark-bg);
+    }
+    .card-link.adaptive:hover {
+        border: 1px solid var(--dark-bg);
+    }
+}
+
 /* This is the code for the layout of the site. */
 
 body {
     margin: 0;
-    width: 100dvw;
-    padding: 1rem;
+    width: 100vw;
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: repeat(4, auto);
@@ -49,10 +63,10 @@ body {
     "header header aside"
     "main main aside"
     "main main aside"
-    "footer footer aside"
-    ;
-    background-color: var(--main-color);
+    "footer footer aside";
     font-family: var(--main-font);
+    background-color: var(--dark-bg);
+    color: var(--light-bg);
 }
 
 header {
@@ -67,8 +81,8 @@ header {
 
 main {
     grid-area: main;
-    height: 65dvh;
-    width: 77dvw;
+    height: 68dvh;
+    width: 80dvw;
 }
 
 aside {
@@ -76,13 +90,15 @@ aside {
     backdrop-filter: blur(5px);
     max-width: 21dvw;
     min-width: 5rem;
-    background-color: rgba(0,0,0,0.03);
+    background-color: rgba(0,0,0,0.05);
 }
 
 footer {
+    margin: 0;
+    padding: 0;
     grid-area: footer;
     height: 25dvh;
-    background-color: rgba(0,0,0,0.03);
+    background-color: rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -104,10 +120,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid var(--secondary-colour);
     border-radius: 1rem;
     padding: .1rem .9rem;
     cursor: pointer;
+    color: #000;
 }
 
 #location-search {
@@ -116,15 +133,17 @@ button {
     border: none;
     width: 8rem;
     padding: .3rem .3rem;
-    /* border-bottom: 1px solid white; */
+    border-radius: 3px;
+    color: var(--light-bg);
 }
 
 #location-search:focus {
-    border: none;
+    border-bottom: 1px solid white;
     outline: none;
+    color: var(--light-bg);
 }
 
-img {
+#search {
     height: 25px;
 }
 
@@ -174,6 +193,8 @@ img {
     font-weight: var(--light-font);
 }
 
+/* This is for the aside / hourly weather */
+
 #hourly-title {
     margin: 1.5rem;
     font-size: 1.5rem;
@@ -185,9 +206,10 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     overflow: scroll;
     padding: 0;
-    font-size: 1.1rem;
+    flex-direction: column;
 }
 
 #hourly-weather::-webkit-scrollbar {
@@ -196,47 +218,70 @@ img {
 
 #hourly-weather li{
     margin-bottom: 3px;
+    font-size: 1.2rem;
+    font-weight: var(--light-font);
 }
 
 #hourly-weather li:last-child {
     margin-bottom: 0;
 }
 
+/* This is for the footer part of the site */
+
 .forecast-links {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    gap: .2rem;
+    max-height: 3rem;
+    margin: 0;
+    padding: .5rem;
 }
 
 .card-link {
-    margin: 8px;
     padding: .3rem;
     width: 6.5rem;
-    margin: .2rem;
     font-size: .8rem;
     font-family: var(--main-font);
     cursor: pointer;
+    color: inherit;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.card-link:hover {
+    scale: 1.05;
+    border: 1px solid var(--light-bg);
+}
+
+.icon {
+    height: 4rem;
+    width: 4rem;
 }
 
 #details {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    font-size: 1.3rem;
+    font-weight: var(--light-font);
 }
 
 #forecast {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    display: none;
+    font-size: 1.3rem;
+    font-weight: var(--thin-font);
 }
 
 .card {
     width: 15rem;
-    text-align: center;
+    align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: .5rem;
+    gap: .2rem;
 }
 
 .copyright {
