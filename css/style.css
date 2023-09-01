@@ -204,9 +204,8 @@ button {
 #hourly-weather {
     height: 60dvh;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     overflow: scroll;
     padding: 0;
     flex-direction: column;
@@ -217,7 +216,6 @@ button {
 }
 
 #hourly-weather li{
-    margin-bottom: 3px;
     font-size: 1.2rem;
     font-weight: var(--light-font);
 }
@@ -284,10 +282,16 @@ button {
     gap: .2rem;
 }
 
+#github-mark {
+    height: 1.5rem;
+}
+
 .copyright {
     position: relative;
     bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+    flex-direction: row;
 }

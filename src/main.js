@@ -31,8 +31,7 @@ updateTimeAndDate();
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(localWeather, () => {
-      noLocation(selectedCity);
-    });
+      noLocation(selectedCity)});
   } else {
     noLocation(selectedCity);
   }
@@ -130,7 +129,7 @@ const selectedCity = popularCities[randomCity];
 console.log(selectedCity);
 
 async function noLocation(param) {
-  try {
+  try{
     const city = await fetch(`${apiUrl}&key=${url}q=${param}&days=3`, { mode: 'cors' });
     const data = await city.json();
     console.log(data);
@@ -140,7 +139,8 @@ async function noLocation(param) {
     displayForecast(data);
     forecastIcons(data);
   } catch (error) {
-    console.log(error);
+    // eslint-disable-next-line no-alert
+    alert(error);
   }
 }
 
@@ -156,6 +156,7 @@ function addHourlyWeather(param) {
   const hourlyWeatherUpdates = param.forecast.forecastday[0].hour;
   if (timeReference <= hourlyWeatherUpdates.length && timeReference <= hours.length) {
     const matchedWeatherHours = hourlyWeatherUpdates.slice(timeReference);
+    console.log(matchedWeatherHours);
     const hoursShort = hours.slice(timeReference);
     for (let i = 0; i < matchedWeatherHours.length; i += 1) {
       hourlyWeatherHours = document.createElement('li');
@@ -227,7 +228,6 @@ function displayForecast(param) {
 async function localWeather(position) {
   const geoWeather = await fetch(`${apiUrl}&key=${url}q=${position.coords.latitude},${position.coords.longitude}&days=3`, { mode: 'cors' });
   const data = await geoWeather.json();
-  console.log(data);
   populateCityName(data);
   addCurrentDetails(data);
   addHourlyWeather(data);
@@ -263,7 +263,6 @@ async function locationLookUp() {
   const location = locationSearch.value;
   const geoWeather = await fetch(`${apiUrl}&key=${url}q=${location}&days=3`, { mode: 'cors' });
   const data = await geoWeather.json();
-  console.log(data);
   clearElements();
   populateCityName(data);
   addCurrentDetails(data);
@@ -581,8 +580,7 @@ function forecastIcons(param) {
   }
 }
 
-const currentDetails = document.getElementById('details-link');
-const forecastLink = document.getElementById('forecast-link');
+// This is for the buttons that will change between the current details and the forecast.
 const detailsDisplay = document.getElementById('details');
 const forecastDisplay = document.getElementById('forecast');
 
