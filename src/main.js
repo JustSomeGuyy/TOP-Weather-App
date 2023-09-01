@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-const apiUrl = 'http://api.weatherapi.com/v1/forecast.json?';
+const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?';
 // eslint-disable-next-line no-undef
 const url = config.MY_Key;
 
