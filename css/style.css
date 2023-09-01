@@ -287,8 +287,8 @@ button {
 }
 
 .copyright {
-    position: relative;
-    bottom: 0;
+    /* position: relative; */
+    /* bottom: 0; */
     display: flex;
     justify-content: center;
     align-items: center;
