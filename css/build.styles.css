@@ -1,0 +1,224 @@
+html {
+  box-sizing: border-box;
+}
+html p {
+  margin: 0;
+  padding: 0;
+  color: hsl(120, 3.64%, 21.57%);
+}
+html li {
+  list-style-type: none;
+}
+html a {
+  text-decoration: none;
+  color: inherit;
+}
+html ul {
+  padding-inline-start: 0;
+}
+
+body {
+  max-width: 1440px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  background-image: radial-gradient(
+    circle 90vh at 50% 100%,
+    hsl(180, 100%, 25.1%),
+    hsla(0, 0%, 0%, 0.25)
+  );
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100dvh;
+  box-sizing: border-box;
+  position: relative;
+  font-weight: 200;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  line-height: 0;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: absolute;
+  top: 0.25rem;
+}
+header .mainHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+header .mainHeader h1 {
+  color: hsl(120, 3.64%, 21.57%);
+  font-size: 3rem;
+  font-weight: 300;
+}
+header .mainHeader input {
+  border-radius: 20px;
+  border: 1px solid hsl(120, 3.64%, 21.57%);
+  height: 2rem;
+  width: 16em;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: hsl(120, 3.64%, 21.57%);
+}
+header .location {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 1.5rem;
+}
+header .date {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+}
+main .main-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main .main-data #current-weather {
+  font-size: 8em;
+  font-weight: 300;
+}
+main .main-data #weather-conds {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.weatherDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  flex: 1 auto;
+  gap: 1rem;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  min-width: 15%;
+  gap: 1rem;
+  padding: 0 5px;
+}
+.titles p {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 5px;
+  border-radius: 25px;
+  outline: hsl(120, 3.64%, 21.57%) solid 1px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+}
+.titles p .hiddenTilHover {
+  display: none;
+}
+.titles p:hover {
+  width: fit-content;
+  outline: hsl(120, 3.64%, 21.57%) solid 1px;
+  border-radius: 25px;
+}
+.titles p:hover .hiddenTilHover {
+  display: inline;
+  border-radius: 50%;
+}
+
+.card {
+  border: 1px solid hsl(120, 3.64%, 21.57%);
+  border-radius: 25px;
+  height: 12em;
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.borderedCard {
+  border: 1px solid hsl(120, 3.64%, 21.57%);
+  border-radius: 25px;
+  height: 12em;
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+.borderedCard .hourlyTime {
+  font-size: 1.25rem;
+}
+.borderedCard .hourlyTemp {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.displays-section {
+  height: 13rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+#hourly-weather {
+  justify-content: space-around;
+  gap: 1rem;
+}
+#hourly-weather span {
+  display: inline;
+}
+
+#details {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+#forecast {
+  gap: 2rem;
+}
+
+.copyright {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 1em;
+  right: 40%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.copyright #github-mark {
+  height: 1.5rem;
+  color: hsl(120, 3.64%, 21.57%);
+}
+
+/*# sourceMappingURL=build.styles.css.map */

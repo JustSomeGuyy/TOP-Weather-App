@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.3.3",
+    "sass": "^1.78.0"
+  },
+  "name": "top-weather-app",
+  "module": "index.ts",
+  "type": "module",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "version": "1.0.0",
+  "description": "This is a weather app I have created for a project during my journey through The Odin Project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "author": "Tyler Wojciechowski Wolfe",
+  "license": "ISC"
+}
