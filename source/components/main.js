@@ -333,7 +333,7 @@ function forecastIcons(param) {
     case "Partly Cloudy ":
       weatherIconTomorrow.src = "imgs/weather_icons/day/116.png";
       break;
-    case "Cloudy":
+    case "Cloudy ":
       weatherIconTomorrow.src = "imgs/weather_icons/day/119.png";
       break;
     case "Overcast ":
@@ -481,7 +481,7 @@ function forecastIcons(param) {
     case "Partly Cloudy ":
       weatherIconTwoDays.src = "imgs/weather_icons/day/116.png";
       break;
-    case "Cloudy":
+    case "Cloudy ":
       weatherIconTwoDays.src = "imgs/weather_icons/day/119.png";
       break;
     case "Overcast ":
