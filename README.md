@@ -2,7 +2,7 @@
 
 This is my submission for The Odin Project/Full-Stack JavaScript/Weather App project.
 
-It's a fully functional weather app that includes an hourly forecast, details for the current weather, as well as a forecast for the upcoming days. 
+It's a fully functional weather app that includes an hourly forecast, details for the current weather, as well as a forecast for the upcoming days.
 
 **Currently no mobile support, and only reads weather in Celsius at the moment, Support in the future**
 

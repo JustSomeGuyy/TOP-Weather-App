@@ -8,290 +8,288 @@ Add scrolling got the hourly forecast
 */
 
 :root {
-    font-size: 1rem;
-    --light-bg: #FAF0E6;
-    --dark-bg: #352F44;
-    --secondary-colour: #B9B4C7;
-    --third-colour: #5C5470;
-    --main-font: 'Poppins', sans-serif;
-    --thin-font: 100;
-    --light-font: 200;
-    --italic: 300;
-    box-sizing: border-box;
+  font-size: 1rem;
+  --light-bg:;
+  --dark-bg: ;
+  --secondary-colour: #b9b4c7;
+  --third-colour: #5c5470;
+  --main-font: "Poppins", sans-serif;
+  --thin-font: 100;
+  --light-font: 200;
+  --italic: 300;
+  box-sizing: border-box;
 }
 
 html {
-    box-sizing: border-box;
-    width: 100%;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-p{
-    margin: 0;
-    padding: 0;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-
-
-@media (prefers-color-scheme: light){
-    body.adaptive {
-        background-color: var(--light-bg);
-        color: var(--dark-bg);
-    }
-    .card-link.adaptive:hover {
-        border: 1px solid var(--dark-bg);
-    }
+@media (prefers-color-scheme: light) {
+  body.adaptive {
+    background-color: var(--light-bg);
+    color: var(--dark-bg);
+  }
+  .card-link.adaptive:hover {
+    border: 1px solid var(--dark-bg);
+  }
 }
 
 /* This is the code for the layout of the site. */
 
 body {
-    margin: 0;
-    width: 100vw;
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(4, auto);
-    grid-template-areas:
+  margin: 0;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
     "header header aside"
     "main main aside"
     "main main aside"
     "footer footer aside";
-    font-family: var(--main-font);
-    background-color: var(--dark-bg);
-    color: var(--light-bg);
+  font-family: var(--main-font);
+  background-color: var(--dark-bg);
+  color: var(--light-bg);
 }
 
 header {
-    grid-area: header;
-    height: 4rem;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(5px);
+  grid-area: header;
+  height: 4rem;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(5px);
 }
 
 main {
-    grid-area: main;
-    height: 68dvh;
-    width: 80dvw;
+  grid-area: main;
+  height: 68dvh;
+  width: 80dvw;
 }
 
 aside {
-    grid-area: aside;
-    backdrop-filter: blur(5px);
-    max-width: 21dvw;
-    min-width: 5rem;
-    background-color: rgba(0,0,0,0.05);
+  grid-area: aside;
+  backdrop-filter: blur(5px);
+  max-width: 21dvw;
+  min-width: 5rem;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 footer {
-    margin: 0;
-    padding: 0;
-    grid-area: footer;
-    height: 25dvh;
-    background-color: rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  grid-area: footer;
+  height: 25dvh;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* button element */
 button {
-    background-color: inherit;
-    border: none;
+  background-color: inherit;
+  border: none;
 }
 
 /* This is for the header */
 .title {
-    font-size: 1.7rem;
-    font-weight: var(--light-font);
+  font-size: 1.7rem;
+  font-weight: var(--light-font);
 }
 
 .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--secondary-colour);
-    border-radius: 1rem;
-    padding: .1rem .9rem;
-    cursor: pointer;
-    color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--secondary-colour);
+  border-radius: 1rem;
+  padding: 0.1rem 0.9rem;
+  cursor: pointer;
+  color: #000;
 }
 
 #location-search {
-    background-color: transparent;
-    padding: 0;
-    border: none;
-    width: 8rem;
-    padding: .3rem .3rem;
-    border-radius: 3px;
-    color: var(--light-bg);
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  width: 8rem;
+  padding: 0.3rem 0.3rem;
+  border-radius: 3px;
+  color: var(--light-bg);
 }
 
 #location-search:focus {
-    border-bottom: 1px solid white;
-    outline: none;
-    color: var(--light-bg);
+  border-bottom: 1px solid white;
+  outline: none;
+  color: var(--light-bg);
 }
 
 #search {
-    height: 25px;
+  height: 25px;
 }
 
 /* This is for the main */
 
 .location {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:  0 1.5rem;
-    font-size: 1.1rem;
-    font-weight: var(--light-font);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: var(--light-font);
 }
 
 .main-data {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    height: 85%;
-    font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 85%;
+  font-size: 2rem;
 }
 
 #current-weather {
-    font-size: 15rem;
+  font-size: 15rem;
 }
 
 .degree {
-    font-size: 8rem;
-    position: relative;
-    bottom: 4rem;
-    line-height: 5px;
+  font-size: 8rem;
+  position: relative;
+  bottom: 4rem;
+  line-height: 5px;
 }
 
 #day-of-week {
-    font-size: 1.75rem;
-    font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 #date {
-    font-size: 3rem;
-    font-weight: var(--thin-font);
+  font-size: 3rem;
+  font-weight: var(--thin-font);
 }
 
 #weather-conds {
-    font-size: 2.5rem;
-    font-weight: var(--light-font);
+  font-size: 2.5rem;
+  font-weight: var(--light-font);
 }
 
 /* This is for the aside / hourly weather */
 
 #hourly-title {
-    margin: 1.5rem;
-    font-size: 1.5rem;
-    font-weight: var(--thin-font);
+  margin: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: var(--thin-font);
 }
 
 #hourly-weather {
-    height: 60dvh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: scroll;
-    padding: 0;
-    flex-direction: column;
+  height: 60dvh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: scroll;
+  padding: 0;
+  flex-direction: column;
 }
 
 #hourly-weather::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-#hourly-weather li{
-    font-size: 1.2rem;
-    font-weight: var(--light-font);
+#hourly-weather li {
+  font-size: 1.2rem;
+  font-weight: var(--light-font);
 }
 
 #hourly-weather li:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* This is for the footer part of the site */
 
 .forecast-links {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: .2rem;
-    max-height: 3rem;
-    margin: 0;
-    padding: .5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.2rem;
+  max-height: 3rem;
+  margin: 0;
+  padding: 0.5rem;
 }
 
 .card-link {
-    padding: .3rem;
-    width: 6.5rem;
-    font-size: .8rem;
-    font-family: var(--main-font);
-    cursor: pointer;
-    color: inherit;
-    background-color: rgba(0,0,0,0.1);
+  padding: 0.3rem;
+  width: 6.5rem;
+  font-size: 0.8rem;
+  font-family: var(--main-font);
+  cursor: pointer;
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card-link:hover {
-    scale: 1.05;
-    border: 1px solid var(--light-bg);
+  scale: 1.05;
+  border: 1px solid var(--light-bg);
 }
 
 .icon {
-    height: 4rem;
-    width: 4rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #details {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.3rem;
-    font-weight: var(--light-font);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.3rem;
+  font-weight: var(--light-font);
 }
 
 #forecast {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    display: none;
-    font-size: 1.3rem;
-    font-weight: var(--thin-font);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  display: none;
+  font-size: 1.3rem;
+  font-weight: var(--thin-font);
 }
 
 .card {
-    width: 15rem;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: .2rem;
+  width: 15rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 #github-mark {
-    height: 1.5rem;
+  height: 1.5rem;
 }
 
 .copyright {
-    /* position: relative; */
-    /* bottom: 0; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-direction: row;
+  /* position: relative; */
+  /* bottom: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
 }
