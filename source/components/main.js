@@ -145,12 +145,10 @@ async function noLocation(param) {
       mode: "cors",
     });
     const data = await city.json();
-    console.log(data);
     populateCityName(data);
     addCurrentDetails(data);
     addHourlyWeather(data);
     displayForecast(data);
-    forecastIcons(data);
   } catch (error) {
     // eslint-disable-next-line no-alert
     alert(error);
