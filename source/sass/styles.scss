@@ -1,13 +1,13 @@
-$mainfont: "Poppins", sans-serif;
+$mainFont: "Poppins", sans-serif;
 $textColour: hsl(120, 3.64%, 21.57%);
 $background: hsla(0, 0%, 0%, 0.25);
-$radius: hsl(180°, 100%, 25.1%);
 $thinFont: 200;
 $lightFont: 300;
 
 // HTML reset
 html {
   box-sizing: border-box;
+  height: 100dvh;
 
   p {
     margin: 0;
@@ -32,95 +32,156 @@ html {
 // Desktop
 // Stylesheet
 body {
-  max-width: 1440px;
-  font-family: $mainfont;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0;
-  margin: 0 auto;
-  background-image: radial-gradient(
-    circle 90vh at 50% 100%,
-    $radius,
-    $background
-  );
-  background-size: 100%;
-  background-repeat: no-repeat;
-  height: 100dvh;
+  font-family: $mainFont;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+  "main main main aside"
+  "footer footer footer footer";
   box-sizing: border-box;
-  position: relative;
   font-weight: $thinFont;
+  background-color: hsl(45, 29%, 97%);
+  margin: 0;
+  height: 100dvh;
 }
 
-// Header styles
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  line-height: 0;
-  flex-direction: column;
-  gap: 1.2rem;
-  position: absolute;
-  top: 0.25rem;
 
-  .mainHeader {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-
-    h1 {
-      color: $textColour;
-      font-size: 3rem;
-      font-weight: $lightFont;
-    }
-
-    input {
-      border-radius: 20px;
-      border: 1px solid $textColour;
-      height: 2rem;
-      width: 16em;
-      padding: 0 0.5rem;
-      background-color: transparent;
-      color: $textColour;
-    }
-  }
-
-  .location {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    text-align: center;
-    font-size: 1.5rem;
-  }
-
-  .date {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 1.1rem;
-  }
-}
 
 // Main display for the details
 main {
+  height: 100%;
+  grid-area: main;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  position: absolute;
-  bottom: 3rem;
-  width: 100%;
-  //   height: 40dvh;
+  gap: 15%;
 
-  .main-data {
+  .locationAndDate {
     display: flex;
+    justify-content: flex-start;
+    gap: 45%;
+    width: 100%;
+    position: relative;
+    top: 1rem;
+    left: 0;
+    padding-left: 10px;
+    font-size: 1.5rem;
+
+    #location-name {
+      text-align: start;
+    }
+
+    #date {
+      text-align: center;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    // gap: 1rem;
+    gap: 8rem;
+
+    .hourlyWeather {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h2 {
+        font-size: 2em;
+        font-weight: $lightFont;
+        line-height: 0;
+      }
+
+      #hourly-weather {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .borderedCard {
+          height: 8em;
+          width: 8rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 0.25rem;
+        
+          .hourlyTime {
+            font-size: 1.25rem;
+          }
+        
+          .hourlyTemp {
+            font-size: 3rem;
+            font-weight: $lightFont;
+          }
+        
+          .hourly-conditions {
+            opacity: 75%;
+          }
+        }
+      }
+    }
+    
+  }
+
+  .main-data {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .weather {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      #current-weather {
+        font-size: 17.5em;
+
+        .degree {
+          // font-size: 0.5em;
+      }
+
+      #weather-conds {
+        font-size: 4em;
+        opacity: 75%;
+      }
+    }
+  }
+
+    .conditions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+
+      .flexRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1.25rem;
+
+        p {
+          font-size: 1.5rem;
+          font-weight: $lightFont;
+        }
+      }
+
+      img {
+        height: 2em;
+        width: 2em;
+      }
+
+    }
 
     #current-weather {
       font-size: 8em;
@@ -134,117 +195,108 @@ main {
   }
 }
 
-.weatherDetails {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100%;
-  flex: 1 auto;
-  gap: 1rem;
-}
-
-.titles {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  min-width: 15%;
-  gap: 1rem;
-  padding: 0 5px;
-
-  p {
-    cursor: pointer;
-    font-size: 2rem;
-    padding: 5px;
-    border-radius: 25px;
-    outline: $textColour solid 1px;
-    height: 35px;
-    width: 35px;
-    text-align: center;
-
-    .hiddenTilHover {
-      display: none;
-    }
-  }
-
-  p:hover {
-    width: fit-content;
-    outline: $textColour solid 1px;
-    border-radius: 25px;
-
-    .hiddenTilHover {
-      display: inline;
-      border-radius: 50%;
-    }
-  }
-}
-
-.card {
-  border: 1px solid $textColour;
-  border-radius: 25px;
-  height: 12em;
-  width: 11rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.borderedCard {
-  border: 1px solid $textColour;
-  border-radius: 25px;
-  height: 12em;
-  width: 11rem;
+aside {
+  grid-area: aside;
+  background-color: hsl(36, 12%, 92%);
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 1rem;
+  gap: 2rem;
+  padding-top: .5rem;
 
-  .hourlyTime {
-    font-size: 1.25rem;
+  input {
+    width: 80%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid hsl(36, 12%, 80%);
+    background-color: hsl(36, 12%, 92%);
+
+    &:focus {
+      outline: none;
+    }
   }
 
-  .hourlyTemp {
-    font-size: 3rem;
+  #time {
+    font-size: 1.5rem;
     font-weight: $lightFont;
   }
-}
 
-.displays-section {
-  height: 13rem;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-}
-
-#hourly-weather {
-  justify-content: space-around;
-  gap: 1rem;
-
-  span {
-    display: inline;
+  #message {
+    font-size: 2rem;
+    font-weight: $lightFont;
   }
-}
 
-#details {
-  display: flex;
-  gap: 1rem;
-  font-size: 1.1rem;
-}
+  #details {
+    font-size: 1.25rem;
 
-#forecast {
-  gap: 2rem;
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
+    }    
+  }
+
+  #feelsLike {
+    font-size: 1.25rem;
+    font-weight: $lightFont;
+  }
+
+  .forecast {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5rem 0;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: $lightFont;
+      line-height: 1rem;
+    }
+
+    .forecastWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .forecastedWeather {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-wrap: none;
+      gap: .5rem;
+
+      :nth-child(1) {
+        font-size: 1.25rem;
+      }
+
+      :nth-child(2) {
+        font-size: 3rem;
+      }
+
+      :last-child {
+        opacity: 75%;
+      }
+    }
+  }
+
+  
 }
 
 // Footer
 .copyright {
+  grid-area: footer;
   display: flex;
   gap: 1rem;
   position: absolute;
-  bottom: 1em;
+  bottom: 0;
   right: 40%;
   margin: 0 auto;
   justify-content: center;

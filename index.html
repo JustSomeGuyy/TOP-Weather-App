@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/build.styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,59 +23,67 @@
     ></script>
   </head>
   <body class="adaptive">
-    <header>
-      <div class="mainHeader">
-        <h1 class="title">ClearSky</h1>
-        <input
+    <main>
+      <div class="locationAndDate">
+        <p id="location-name"></p>
+        <p id="date"></p>
+      </div>
+      <!-- Main weather information -->
+        <div class="wrapper">
+          <div class="main-data">
+            <div class="weather">
+              <p id="current-weather"></p>
+              <p id="weather-conds"></p>
+            </div>
+            <div class="conditions">
+                <div class="flexRow">
+                  <img src="imgs/wind.png" alt="An icon for the wind speed and it's direction" />
+                  <p id="wind"></p>
+                </div>
+                <div class="flexRow">
+                  <img src="imgs/raindrop.png" alt="The icon for the percentage of humidity" />
+                  <p id="humidity"></p>
+                </div>
+            </div>
+          </div>
+          <div class="hourlyWeather">
+            <h2>Hourly Weather</h2>
+            <div id="hourly-weather">
+            </div>
+          </div>
+          
+        </div>
+    </main>
+
+    <aside>
+      <input
           type="search"
           name="location-search"
           id="location-search"
-          placeholder="search.."
+          placeholder="search"
         />
-      </div>
-      <div class="location">
-        <p id="location-name"></p>
         <p id="time"></p>
-        <p id="country-name"></p>
-      </div>
-      <div class="date">
-        <p id="day-of-week"></p>
-        <p id="date"></p>
-      </div>
-    </header>
-
-    <main>
-      <div class="main-data">
-        <div class="weather">
-          <p id="current-weather"></p>
-        </div>
-        <div class="conditions">
-          <p id="weather-conds"></p>
+        <p id="message"></p>
+      <div id="detailCard">
+        <div id="details">
+          
         </div>
       </div>
-
-      <div class="weatherDetails">
-        <div class="titles">
-          <p>C<span class="hiddenTilHover">onditions</span></p>
-          <p onclick="ChangeMenu('hourly-weather')">
-            H<span class="hiddenTilHover">ourly</span>
-          </p>
-          <p>F<span class="hiddenTilHover">orecast</span></p>
-        </div>
-        <div class="displays-section">
-          <div id="details" style="display: flex"></div>
-          <div id="hourly-weather" style="display: none"></div>
-          <div id="forecast" style="display: none">
-            <div class="forecastedWeather card" id="box-0">
-              <p id="tomorrow"></p>
-            </div>
-            <div class="forecastedWeather card" id="box-1">
-              <p id="theDayAfter"></p>
-            </div>
+      <p id="feelsLike"></p>
+      
+      <div class="forecast">
+        <h2>2 Day Forecast</h2>
+        <div class="forecastWrapper">
+          <div class="forecastedWeather" id="box-0">
+            <p id="tomorrow"></p>
+          </div>
+          <div class="forecastedWeather" id="box-1">
+            <p id="theDayAfter"></p>
           </div>
         </div>
       </div>
-    </main>
+      
+    </aside>
 
     <footer class="copyright">
       <p>

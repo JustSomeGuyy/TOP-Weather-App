@@ -1,0 +1,248 @@
+html {
+  box-sizing: border-box;
+  height: 100dvh;
+}
+html p {
+  margin: 0;
+  padding: 0;
+  color: hsl(120, 3.64%, 21.57%);
+}
+html li {
+  list-style-type: none;
+}
+html a {
+  text-decoration: none;
+  color: inherit;
+}
+html ul {
+  padding-inline-start: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "main main main aside" "footer footer footer footer";
+  box-sizing: border-box;
+  font-weight: 200;
+  background-color: hsl(45, 29%, 97%);
+  margin: 0;
+  height: 100dvh;
+}
+
+main {
+  height: 100%;
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15%;
+}
+main .locationAndDate {
+  display: flex;
+  justify-content: flex-start;
+  gap: 45%;
+  width: 100%;
+  position: relative;
+  top: 1rem;
+  left: 0;
+  padding-left: 10px;
+  font-size: 1.5rem;
+}
+main .locationAndDate #location-name {
+  text-align: start;
+}
+main .locationAndDate #date {
+  text-align: center;
+}
+main .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+}
+main .wrapper .hourlyWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main .wrapper .hourlyWeather h2 {
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 0;
+}
+main .wrapper .hourlyWeather #hourly-weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+main .wrapper .hourlyWeather #hourly-weather .borderedCard {
+  height: 8em;
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+main .wrapper .hourlyWeather #hourly-weather .borderedCard .hourlyTime {
+  font-size: 1.25rem;
+}
+main .wrapper .hourlyWeather #hourly-weather .borderedCard .hourlyTemp {
+  font-size: 3rem;
+  font-weight: 300;
+}
+main .wrapper .hourlyWeather #hourly-weather .borderedCard .hourly-conditions {
+  opacity: 75%;
+}
+main .main-data {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+main .main-data .weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main .main-data .weather #current-weather {
+  font-size: 17.5em;
+}
+main .main-data .weather #current-weather #weather-conds {
+  font-size: 4em;
+  opacity: 75%;
+}
+main .main-data .conditions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+main .main-data .conditions .flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+}
+main .main-data .conditions .flexRow p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+main .main-data .conditions img {
+  height: 2em;
+  width: 2em;
+}
+main .main-data #current-weather {
+  font-size: 8em;
+  font-weight: 300;
+}
+main .main-data #weather-conds {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+aside {
+  grid-area: aside;
+  background-color: hsl(36, 12%, 92%);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 0.5rem;
+}
+aside input {
+  width: 80%;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid hsl(36, 12%, 80%);
+  background-color: hsl(36, 12%, 92%);
+}
+aside input:focus {
+  outline: none;
+}
+aside #time {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+aside #message {
+  font-size: 2rem;
+  font-weight: 300;
+}
+aside #details {
+  font-size: 1.25rem;
+}
+aside #details .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+aside #feelsLike {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+aside .forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem 0;
+}
+aside .forecast h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1rem;
+}
+aside .forecast .forecastWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+aside .forecast .forecastedWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-wrap: none;
+  gap: 0.5rem;
+}
+aside .forecast .forecastedWeather :nth-child(1) {
+  font-size: 1.25rem;
+}
+aside .forecast .forecastedWeather :nth-child(2) {
+  font-size: 3rem;
+}
+aside .forecast .forecastedWeather :last-child {
+  opacity: 75%;
+}
+
+.copyright {
+  grid-area: footer;
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.copyright #github-mark {
+  height: 1.5rem;
+  color: hsl(120, 3.64%, 21.57%);
+}
+
+/*# sourceMappingURL=styles.css.map */
